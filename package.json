@@ -1,0 +1,45 @@
+{
+  "name": "bugs-defense",
+  "version": "0.1.0",
+  "description": "Bugs Defense",
+  "private": true,
+  "main": "./main.js",
+  "build": {
+    "appId": "bugs-defense.app",
+    "productName": "Bugs Defense",
+    "copyright": "Copyright © 2019 Daniel Roux",
+    "mac": {
+      "category": "bugs-defense.category.type"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config prod.config.js",
+    "serve": "webpack serve --node-env=development --progress --watch-files src/**/*.js"
+  },
+  "keywords": [],
+  "author": "Daniel Roux",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "electron": "^14.0.1",
+    "electron-builder": "^22.11.7",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "path-browserify": "^1.0.1",
+    "stream-browserify": "^3.0.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "require-fool-webpack": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.epsitec.ch/DR/bugs-defense.git"
+  }
+}
