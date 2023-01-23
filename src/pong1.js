@@ -9,7 +9,6 @@ import Random from "./random";
 
 export default class Pong1 {
   constructor() {
-    this.pixmap = new Pixmap();
     this.absoluteTime = 0;
     this.position = new Point(100, 100);
     this.direction = 30; // 30 deg
@@ -50,11 +49,9 @@ export default class Pong1 {
     }
   }
 
-  draw(device) {
-    const area = Pixmap.fullScreen;
-    this.pixmap.drawIcon(device, "80x80", 7, area, 1, 0);
-
+  draw(device, pixmap) {
+    // Draw ball.
     const rect = Rect.fromCenterSize(this.position, this.radius * 2);
-    this.pixmap.drawIcon(device, "80x80", 0, rect, 1, 0);
+    pixmap.drawIcon(device, "80x80", 0, rect, 1, 0);
   }
 }
