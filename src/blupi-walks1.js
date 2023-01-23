@@ -16,8 +16,8 @@ export default class BlupiWalks1 {
 
   step(device, elapsedTime, input) {
     this.absoluteTime += elapsedTime;
-    this.distance += elapsedTime * 50; // 50 pixels / seconds
-    this.distance = this.distance % (50 * 50);
+    this.distance += elapsedTime * 50; // 50 pixels / second
+    this.distance = this.distance % 500;
   }
 
   draw(device) {
