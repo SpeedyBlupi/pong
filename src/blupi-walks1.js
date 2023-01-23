@@ -16,7 +16,8 @@ export default class BlupiWalks1 {
 
   step(device, elapsedTime, input) {
     this.absoluteTime += elapsedTime;
-    this.distance += elapsedTime * 50; // 50 pixels / second
+
+    this.distance += elapsedTime * 100; // 100 pixels / second
     this.distance = this.distance % 500;
   }
 
@@ -26,7 +27,7 @@ export default class BlupiWalks1 {
     const position = Point.move(start, goal, this.distance);
 
     const icons = [2, 3, 2, 4];
-    const i = Math.trunc(this.distance / 8);
+    const i = Math.trunc(this.distance / 12);
     const icon = icons[i % icons.length];
 
     const rect = Rect.fromCenterSize(position, 80);
