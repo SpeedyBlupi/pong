@@ -19,7 +19,6 @@ body {
   height: 100%;
   overflow: hidden;
   background-color: black;
-  cursor: none;
 }`;
 style.appendChild(document.createTextNode(css));
 
@@ -28,12 +27,6 @@ const game = new Game();
 var hasFocus = true;
 
 function initialise() {
-  // TODO: Ne fonctionne pas, jamais appelé !
-  //- document.addEventListener("focus", focusHandler, true);
-  //- document.addEventListener("focusIn", focusHandler, true);
-  //- document.addEventListener("blur", blurHandler, true);
-  //- document.addEventListener("focusOut", blurHandler, true);
-
   document.addEventListener("mousemove", mouseMoveHandler, false);
   document.addEventListener("mousedown", mouseDownHandler, false);
   document.addEventListener("mouseup", mouseUpHandler, false);
@@ -41,16 +34,6 @@ function initialise() {
   document.addEventListener("touchmove", touchMoveHandler, false);
   document.addEventListener("touchstart", touchStartHandler, false);
   document.addEventListener("touchend", touchEndHandler, false);
-}
-
-function focusHandler(e) {
-  console.log("focusHandler");
-  hasFocus = true;
-}
-
-function blurHandler(e) {
-  console.log("blurHandler");
-  hasFocus = false;
 }
 
 function mouseMoveHandler(e) {
@@ -161,7 +144,7 @@ function update(elapsedTime, imagesLoaded, soundsToLoad) {
     sounds: soundsToLoad,
     hasFocus: hasFocus,
   };
-  game.update(device, elapsedTime); //????
+  game.update(device, elapsedTime);
 
   ctx.restore(); // restore without clipping
 }

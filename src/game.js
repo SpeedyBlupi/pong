@@ -14,7 +14,12 @@ export default class Game {
   constructor() {
     this.audio = new AudioPlayer();
     this.pixmap = new Pixmap();
+
     this.mouseTouch = true; // hide mouse cursor by default
+    this.mouseDown = false;
+    this.mouseUp = false;
+    this.mousePos = new Point(0, 0);
+
     this.pong1 = new Pong1();
     this.blupi1 = new BlupiWalks1();
     this.blupi2 = new BlupiWalks2();
@@ -28,7 +33,19 @@ export default class Game {
 
   // Time are in seconds.
   update(device, elapsedTime) {
-    this._step(device, elapsedTime, null);
+    const pos = this.mousePos;
+    const isDown = this.mouseDown;
+    const isTouch = this.mouseTouch;
+    const input = { pos, isDown, isTouch };
+
+    if (this.mouseUp) {
+      // Clears these events when they have been processed.
+      // This allows a very short down/up click are always done!
+      this.mouseDown = false;
+      this.mouseUp = false;
+    }
+
+    this._step(device, elapsedTime, input);
     this._draw(device);
   }
 
