@@ -169,13 +169,13 @@ function timestamp() {
 }
 
 function gameLoop(imagesLoaded, soundsToLoad) {
-  var absoluteTime = timestamp();
+  var last = timestamp();
 
   function frame() {
     const now = timestamp();
-    const elapsedTime = Math.min(1000, now - absoluteTime);
-    absoluteTime += elapsedTime;
-    update(elapsedTime / 1000, imagesLoaded, soundsToLoad);
+    const elapsedTime = Math.min(1, (now - last) / 1000);
+    last = now;
+    update(elapsedTime, imagesLoaded, soundsToLoad);
 
     requestAnimationFrame(frame);
   }
