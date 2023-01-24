@@ -34,6 +34,9 @@ function initialise() {
   document.addEventListener("touchmove", touchMoveHandler, false);
   document.addEventListener("touchstart", touchStartHandler, false);
   document.addEventListener("touchend", touchEndHandler, false);
+
+  document.addEventListener("keydown", keyDownHandler, false);
+  document.addEventListener("keyup", keyUpHandler, false);
 }
 
 function mouseMoveHandler(e) {
@@ -96,6 +99,14 @@ function touchEndHandler(e) {
   game.setMouseTouch(true);
   game.mousePos = revertTransform(new Point(x, y));
   game.mouseUp = true; // Set the event "up". It will be cleared after its treatment (by game).
+}
+
+function keyDownHandler(e) {
+  game.keysDown.set(e.code);
+}
+
+function keyUpHandler(e) {
+  game.keysDown.delete(e.code);
 }
 
 //------------------------------------------------------------------------

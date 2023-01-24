@@ -5,6 +5,7 @@ import Rect from "./rect";
 import Misc from "./misc";
 import Random from "./random";
 import Pong1 from "./pong1";
+import PingPong1 from "./ping-pong1";
 import BlupiWalks1 from "./blupi-walks1";
 import BlupiWalks2 from "./blupi-walks2";
 
@@ -19,8 +20,10 @@ export default class Game {
     this.mouseDown = false;
     this.mouseUp = false;
     this.mousePos = new Point(0, 0);
+    this.keysDown = new Map();
 
     this.pong1 = new Pong1();
+    this.pingPong1 = new PingPong1();
     this.blupi1 = new BlupiWalks1();
     this.blupi2 = new BlupiWalks2();
   }
@@ -33,10 +36,12 @@ export default class Game {
 
   // Time are in seconds.
   update(device, elapsedTime) {
-    const pos = this.mousePos;
-    const isDown = this.mouseDown;
-    const isTouch = this.mouseTouch;
-    const input = { pos, isDown, isTouch };
+    const input = {
+      pos: this.mousePos,
+      isDown: this.mouseDown,
+      isTouch: this.mouseTouch,
+      keysDown: this.keysDown,
+    };
 
     if (this.mouseUp) {
       // Clears these events when they have been processed.
@@ -53,6 +58,7 @@ export default class Game {
 
   _step(device, elapsedTime, input) {
     this.pong1.step(device, elapsedTime, input);
+    this.pingPong1.step(device, elapsedTime, input);
     this.blupi1.step(device, elapsedTime, input);
     this.blupi2.step(device, elapsedTime, input);
   }
@@ -62,8 +68,9 @@ export default class Game {
     const area = Pixmap.fullScreen;
     this.pixmap.drawIcon(device, "80x80", 7, area, 1, 0);
 
-    this.pong1.draw(device, this.pixmap);
-    this.blupi1.draw(device, this.pixmap);
-    this.blupi2.draw(device, this.pixmap);
+    // this.pong1.draw(device, this.pixmap);
+    this.pingPong1.draw(device, this.pixmap);
+    // this.blupi1.draw(device, this.pixmap);
+    // this.blupi2.draw(device, this.pixmap);
   }
 }

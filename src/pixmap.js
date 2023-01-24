@@ -151,7 +151,7 @@ export default class Pixmap {
   static _getTotal(channel) {
     switch (channel) {
       case "80x80":
-        return 8;
+        return 9;
       default:
         return null;
     }
