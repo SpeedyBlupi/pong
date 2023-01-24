@@ -161,6 +161,10 @@ function update(elapsedTime, imagesLoaded, soundsToLoad) {
 }
 
 // https://codeincomplete.com/posts/javascript-game-foundations-the-game-loop/
+//
+// (*) One additional note is that requestAnimationFrame might pause if our
+//     browser loses focus, resulting in a very, very large dt after it resumes.
+//     We can workaround this by limiting the delta to one second.
 
 function timestamp() {
   return window.performance && window.performance.now
@@ -173,7 +177,7 @@ function gameLoop(imagesLoaded, soundsToLoad) {
 
   function frame() {
     const now = timestamp();
-    const elapsedTime = Math.min(1, (now - last) / 1000);
+    const elapsedTime = Math.min(1, (now - last) / 1000); //(*)
     last = now;
     update(elapsedTime, imagesLoaded, soundsToLoad);
 
