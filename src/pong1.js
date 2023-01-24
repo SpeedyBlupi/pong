@@ -9,22 +9,18 @@ import Random from "./random";
 
 export default class Pong1 {
   constructor() {
-    this.absoluteTime = 0;
     this.position = new Point(100, 100);
     this.direction = 30; // 30 deg
     this.radius = 40;
+    this.speed = 200; // 200 pixels / second
   }
 
   step(device, elapsedTime, input) {
-    this.absoluteTime += elapsedTime;
-
-    const distance = elapsedTime * 200; // 200 pixels / second
-
-    this.position = Point.rotatePointDeg(
-      this.position,
-      this.direction,
-      new Point(this.position.x + distance, this.position.y)
-    );
+    const distance = elapsedTime * this.speed;
+    const x = this.position.x + distance;
+    const y = this.position.y;
+    const p = new Point(x, y);
+    this.position = Point.rotatePointDeg(this.position, this.direction, p);
 
     const area = Pixmap.fullScreen.inflate(-this.radius, -this.radius);
 

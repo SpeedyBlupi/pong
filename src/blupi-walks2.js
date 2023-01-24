@@ -10,11 +10,10 @@ import Random from "./random";
 export default class BlupiWalks2 {
   constructor() {
     this.absoluteTime = 0;
+    this.start = new Point(100, 150);
     this.distance = 0;
 
-    // const from icons
-    this.deltaX = 4;
-    this.deltaY = 1;
+    this.delta = new Point(4, 1); // const from icons
     // this.horizontalMovePerFrame = 14; // exact, but not nice
     this.horizontalMovePerFrame = 8; // better
     this.speed = 80; // 80 pixels / second
@@ -30,9 +29,8 @@ export default class BlupiWalks2 {
 
   draw(device, pixmap) {
     // Draw blupi.
-    const start = new Point(100, 150);
-    const goal = Point.add(start, new Point(this.deltaX, this.deltaY));
-    const position = Point.move(start, goal, this.distance);
+    const goal = Point.add(this.start, this.delta);
+    const position = Point.move(this.start, goal, this.distance);
 
     const icons = [2, 3, 2, 4];
     const i = Math.trunc(this.distance / this.horizontalMovePerFrame);
