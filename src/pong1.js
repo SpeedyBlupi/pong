@@ -19,12 +19,12 @@ export default class Pong1 {
     this.absoluteTime += elapsedTime;
 
     const distance = elapsedTime * 200; // 200 pixels / second
-    const goal = Point.rotatePointDeg(
+
+    this.position = Point.rotatePointDeg(
       this.position,
       this.direction,
-      new Point(this.position.x + 100, this.position.y)
+      new Point(this.position.x + distance, this.position.y)
     );
-    this.position = Point.move(this.position, goal, distance);
 
     const area = Pixmap.fullScreen.inflate(-this.radius, -this.radius);
 
