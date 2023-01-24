@@ -12,6 +12,7 @@ export default class Racket1 {
     this.absoluteTime = 0;
 
     this.size = 80; // racket size
+    this.speed = 300; // 300 pixels / second
     this.x = 0;
     this.y = 0;
   }
@@ -41,10 +42,10 @@ export default class Racket1 {
     // Move racket according to arrow keys up/down.
     let move = 0;
     if (this._isArrowUp(input)) {
-      move = -200; // 200px/s to up
+      move = -this.speed;
     }
     if (this._isArrowDown(input)) {
-      move = 200; // 200px/s to down
+      move = this.speed;
     }
     this.y += move * elapsedTime;
 

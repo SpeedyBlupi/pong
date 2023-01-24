@@ -14,23 +14,37 @@ export default class Ball1 {
     this.position = null;
     this.direction = 0;
     this.radius = 0;
+    this.speed = 0;
     this.racketRect = null;
   }
 
   initialise() {
-    this.position = new Point(100, 100);
-    this.direction = 30; // 30 deg
     this.radius = 20;
+    this.speed = 400; // 400 pixels / second
+    this.restart();
+  }
+
+  restart() {
+    const area = this._area;
+    const min = area.top;
+    const max = area.bottom;
+    const y = Misc.linear(0, min, 1, max, Math.random());
+    this.position = new Point(this.radius, y);
+    this.direction = Misc.linear(0, -60, 1, 60, Math.random()); // -60..60 deg
   }
 
   setRacketRect(rect) {
     this.racketRect = rect;
   }
 
+  get _area() {
+    return Pixmap.fullScreen.inflate(-this.radius, -this.radius);
+  }
+
   step(device, elapsedTime, input) {
     this.absoluteTime += elapsedTime;
 
-    const distance = elapsedTime * 200; // 200 pixels / second
+    const distance = elapsedTime * this.speed;
     const goal = Point.rotatePointDeg(
       this.position,
       this.direction,
@@ -49,11 +63,12 @@ export default class Ball1 {
       }
     }
 
-    const area = Pixmap.fullScreen.inflate(-this.radius, -this.radius);
+    const area = this._area;
 
     // Collision à droite ?
     if (this.position.x > area.right) {
-      this.direction = 180 - this.direction;
+      // this.direction = 180 - this.direction;
+      this.restart();
     }
 
     // Collision à gauche ?
