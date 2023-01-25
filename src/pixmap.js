@@ -113,18 +113,6 @@ export default class Pixmap {
   static get imagesToLoad() {
     const imagesToLoad = [];
 
-    const images = ["backgrounds.init"];
-    for (const image of images) {
-      const p = image.split(".");
-      const dir = p[0];
-      const channel = p[1];
-      const file = cache[`./${dir}/${channel}.png`];
-      imagesToLoad.push({
-        channel: channel,
-        filename: file,
-      });
-    }
-
     const folderSprites = ["80x80"];
     for (const channel of folderSprites) {
       const total = Pixmap._getTotal(channel);
