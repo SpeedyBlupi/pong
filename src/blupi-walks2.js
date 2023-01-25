@@ -17,7 +17,6 @@ export default class BlupiWalks2 {
     // this.horizontalMovePerFrame = 14; // exact, but not nice
     this.horizontalMovePerFrame = 8; // better
     this.speed = 80; // 80 pixels / second
-    this.fps = 10;
   }
 
   step(device, elapsedTime, input) {
@@ -32,8 +31,8 @@ export default class BlupiWalks2 {
     const goal = Point.add(this.start, this.delta);
     const position = Point.move(this.start, goal, this.distance);
 
-    const icons = [2, 3, 2, 4];
     const i = Math.trunc(this.distance / this.horizontalMovePerFrame);
+    const icons = [2, 3, 2, 4];
     const icon = icons[i % icons.length];
 
     const rect = Rect.fromCenterSize(position, 80);
