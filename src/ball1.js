@@ -53,6 +53,7 @@ export default class Ball1 {
     );
 
     // Collision avec la raquette.
+    // TODO: A améliorer, dans certains cas la balle reste crochée sur la raquette !
     if (this.racketRect) {
       if (
         this.position.y >= this.racketRect.top &&

@@ -12,7 +12,6 @@ import Racket from "./racket1";
 
 export default class PingPong1 {
   constructor() {
-    this.absoluteTime = 0;
     this.position = new Point(100, 100);
     this.direction = 30; // 30 deg
     this.radius = 20;
@@ -25,12 +24,11 @@ export default class PingPong1 {
   }
 
   step(device, elapsedTime, input) {
-    this.absoluteTime += elapsedTime;
-
-    this.ball.step(device, elapsedTime, input);
     this.racket.step(device, elapsedTime, input);
 
     this.ball.setRacketRect(this.racket.rect);
+
+    this.ball.step(device, elapsedTime, input);
   }
 
   draw(device, pixmap) {
