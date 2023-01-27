@@ -25,7 +25,7 @@ export default class Ball1 {
   }
 
   restart() {
-    const area = this._area;
+    const area = this.area;
     const min = area.top;
     const max = area.bottom;
     const y = Misc.linear(0, min, 1, max, Math.random());
@@ -37,7 +37,7 @@ export default class Ball1 {
     this.racketRect = rect;
   }
 
-  get _area() {
+  get area() {
     return Pixmap.fullScreen.inflate(-this.radius, -this.radius);
   }
 
@@ -63,7 +63,7 @@ export default class Ball1 {
       }
     }
 
-    const area = this._area;
+    const area = this.area;
 
     // Collision à droite ?
     if (this.position.x > area.right) {

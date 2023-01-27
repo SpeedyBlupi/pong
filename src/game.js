@@ -50,20 +50,20 @@ export default class Game {
       this.mouseUp = false;
     }
 
-    this._step(device, elapsedTime, input);
-    this._draw(device);
+    this.step(device, elapsedTime, input);
+    this.draw(device);
   }
 
   //------------------------------------------------------------------------
 
-  _step(device, elapsedTime, input) {
+  step(device, elapsedTime, input) {
     this.pong1.step(device, elapsedTime, input);
     this.pingPong1.step(device, elapsedTime, input);
     this.blupi1.step(device, elapsedTime, input);
     this.blupi2.step(device, elapsedTime, input);
   }
 
-  _draw(device) {
+  draw(device) {
     // Draw grey background.
     const area = Pixmap.fullScreen;
     this.pixmap.drawIcon(device, "80x80", 7, area, 1, 0);

@@ -29,10 +29,10 @@ export default class Racket1 {
     return Rect.fromCenterSize(center, this.size);
   }
 
-  _isArrowUp(input) {
+  isArrowUp(input) {
     return input.keysDown.has("ArrowUp");
   }
-  _isArrowDown(input) {
+  isArrowDown(input) {
     return input.keysDown.has("ArrowDown");
   }
 
@@ -41,10 +41,10 @@ export default class Racket1 {
 
     // Move racket according to arrow keys up/down.
     let move = 0;
-    if (this._isArrowUp(input)) {
+    if (this.isArrowUp(input)) {
       move = -this.speed;
     }
-    if (this._isArrowDown(input)) {
+    if (this.isArrowDown(input)) {
       move = this.speed;
     }
     this.y += move * elapsedTime;
