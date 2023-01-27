@@ -69,8 +69,8 @@ export default class Game {
     this.pixmap.drawIcon(device, "80x80", 7, area, 1, 0);
 
     // this.pong1.draw(device, this.pixmap);
-    // this.pingPong1.draw(device, this.pixmap);
-    this.blupi1.draw(device, this.pixmap);
-    this.blupi2.draw(device, this.pixmap);
+    this.pingPong1.draw(device, this.pixmap);
+    // this.blupi1.draw(device, this.pixmap);
+    // this.blupi2.draw(device, this.pixmap);
   }
 }
