@@ -21,6 +21,15 @@ export default class Pixmap {
 
   //------------------------------------------------------------------------
 
+  /**
+   * Draw an icon in canvas.
+   * @param {*} device
+   * @param {string} channel - channel, by example "80x80"
+   * @param {number} icon  - index of icon 0..n
+   * @param {Rect} dstRect - destination rectangle
+   * @param {number} opacity - opacity from 0 (transparent) to 1 (opaque)
+   * @param {number} rotation - rotation in degrees -360..360
+   */
   drawIcon(device, channel, icon, dstRect, opacity, rotation) {
     if (!channel || !dstRect || typeof icon === "undefined" || icon === -1) {
       return;

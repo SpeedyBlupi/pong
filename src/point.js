@@ -1,6 +1,12 @@
 import Misc from "./misc";
 
 export default class Point {
+  /**
+   * Constructor, make a Point.
+   * @param {number} x - coordinate X: 0..800 pixels
+   * @param {number} y - coordinate Y: 0..480 pixels, from top to bottom
+   * @returns {Point}
+   */
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -148,6 +154,12 @@ export default class Point {
 
   //------------------------------------------------------------------------
 
+  /**
+   * Returns the distance between two points.
+   * @param {Point} a
+   * @param {Point} b
+   * @returns {number} the distance
+   */
   static distance(a, b) {
     if (!a || !b) {
       console.error("point.distance: a or b undefined");
@@ -230,6 +242,13 @@ export default class Point {
 
   //------------------------------------------------------------------------
 
+  /**
+   * Rotates a point around a center.
+   * @param {Point} center - center of the circle
+   * @param {number} angle - angle in degrees -360..360
+   * @param {Point} p - point on the circle
+   * @returns {Point} p' rotated point
+   */
   static rotatePointDeg(center, angle, p) {
     return Point.rotatePointRad(center, Misc.degToRad(angle), p);
   }
@@ -263,7 +282,13 @@ export default class Point {
     return { x: a.x + (b.x - a.x) * scale, y: a.y + (b.y - a.y) * scale };
   }
 
-  //	Avance d'une certaine distance le long d'une droite AB.
+  /**
+   * Moves a certain distance along a line AB.
+   * @param {Point} a - A: origin
+   * @param {Point} b - B: point along the line
+   * @param {number} distance
+   * @returns {Point} point 'a' moved
+   */
   static move(a, b, distance) {
     const length = Point.distance(a, b);
     const scale = length === 0 ? 0 : distance / length;
@@ -329,7 +354,13 @@ export default class Point {
 
   //------------------------------------------------------------------------
 
-  //	Calcule l'intersection I d'une droite AB avec une horizontale Y.
+  /**
+   * Calcule l'intersection I d'une droite AB avec une horizontale Y.
+   * @param {Point} a
+   * @param {Point} b
+   * @param {nomber} y
+   * @returns map {result: true/false, pos: Point}
+   */
   static intersectsWithHorizontal(a, b, y) {
     const i = Point.fromPoint(a);
 
@@ -347,7 +378,13 @@ export default class Point {
     return { result: true, pos: i };
   }
 
-  //	Calcule l'intersection I d'une droite AB avec une verticale X.
+  /**
+   * Calcule l'intersection I d'une droite AB avec une verticale X.
+   * @param {Point} a
+   * @param {Point} b
+   * @param {nomber} y
+   * @returns map {result: true/false, pos: Point}
+   */
   static intersectsWithVertical(a, b, x) {
     const i = Point.fromPoint(a);
 

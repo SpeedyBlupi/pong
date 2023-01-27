@@ -2,6 +2,14 @@ import Point from "./point";
 import Pixmap from "./pixmap";
 
 export default class Rect {
+  /**
+   * Constructor, make a Rect.
+   * @param {number} left - Coordinate X
+   * @param {number} top - Coordinate Y
+   * @param {number} width - Horizontal size
+   * @param {number} height - Vertical size
+   * @returns {Rect}
+   */
   constructor(left, top, width, height) {
     if (
       typeof left === "undefined" ||
@@ -75,7 +83,7 @@ export default class Rect {
   get center() {
     return {
       x: (this.left + this.right) / 2,
-      y: (this.top + this.bottom) / 2
+      y: (this.top + this.bottom) / 2,
     };
   }
 
@@ -103,6 +111,11 @@ export default class Rect {
 
   //------------------------------------------------------------------------
 
+  /**
+   * Check if a point is inside the current rectangle.
+   * @param {Point} p
+   * @returns {boolean} true if p is inside
+   */
   isInside(p) {
     return (
       p.x >= this.left &&
@@ -112,6 +125,12 @@ export default class Rect {
     );
   }
 
+  /**
+   * Enlarge the current rectangle.
+   * @param {number} dx
+   * @param {number} dy
+   * @returns {Rect} the rectangle enlarged
+   */
   inflate(dx, dy) {
     dy = dy || dx;
     return new Rect(
@@ -122,6 +141,11 @@ export default class Rect {
     );
   }
 
+  /**
+   * Move the current rectangle.
+   * @param {Point} m - dx and dy
+   * @returns none
+   */
   move(m) {
     this.left += m.dx;
     this.right += m.dx;
@@ -140,7 +164,7 @@ export default class Rect {
     const r = new Rect(left, top, right - left, bottom - top);
     return {
       rect: r,
-      isEmpty: Rect.isRectEmpty(r)
+      isEmpty: Rect.isRectEmpty(r),
     };
   }
 
@@ -153,7 +177,7 @@ export default class Rect {
     const r = new Rect(left, top, right - left, bottom - top);
     return {
       rect: r,
-      isEmpty: Rect.isRectEmpty(r)
+      isEmpty: Rect.isRectEmpty(r),
     };
   }
 
@@ -176,7 +200,7 @@ export default class Rect {
     //  puisqu'on souhaite une rotation selon le centre.
     const c = {
       x: rect.Width / 2.0,
-      y: rect.Height / 2.0
+      y: rect.Height / 2.0,
     };
 
     const r = Point.rotatePointRad({ x: 0, y: 0 }, angle, c);
@@ -190,8 +214,6 @@ export default class Rect {
   //------------------------------------------------------------------------
 
   toString() {
-    return `left=${this.left}, top=${this.top}, right=${this.right}, bottom=${
-      this.bottom
-    }`;
+    return `left=${this.left}, top=${this.top}, right=${this.right}, bottom=${this.bottom}`;
   }
 }
