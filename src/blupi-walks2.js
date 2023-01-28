@@ -32,10 +32,10 @@ export default class BlupiWalks2 {
     const position = Point.move(this.start, goal, this.distance);
 
     const i = Math.trunc(this.distance / this.horizontalMovePerFrame);
-    const icons = [2, 3, 2, 4];
+    const icons = [1, 2, 1, 3];
     const icon = icons[i % icons.length];
 
     const rect = Rect.fromCenterSize(position, 80);
-    pixmap.drawIcon(device, "80x80", icon, rect, 1, 0);
+    pixmap.drawIcon(device, "bm1", icon, rect, 1, 0);
   }
 }

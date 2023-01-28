@@ -122,6 +122,18 @@ export default class Pixmap {
   static get imagesToLoad() {
     const imagesToLoad = [];
 
+    const images = ["icons.bm1", "icons.bm2"];
+    for (const image of images) {
+      const p = image.split(".");
+      const dir = p[0];
+      const channel = p[1];
+      const file = cache[`./${dir}/${channel}.png`];
+      imagesToLoad.push({
+        channel: channel,
+        filename: file,
+      });
+    }
+
     const folderSprites = ["80x80"];
     for (const channel of folderSprites) {
       const total = Pixmap._getTotal(channel);
@@ -161,6 +173,24 @@ export default class Pixmap {
           width: 80,
           height: 80,
           folder: true,
+        };
+        break;
+
+      case "bm1":
+        return {
+          imageWidth: 1280,
+          imageHeight: 640,
+          width: 80,
+          height: 80,
+        };
+        break;
+
+      case "bm2":
+        return {
+          imageWidth: 1280,
+          imageHeight: 640,
+          width: 80,
+          height: 80,
         };
         break;
 
