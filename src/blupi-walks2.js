@@ -43,7 +43,7 @@ export default class BlupiWalks2 {
 
     const isUp = this.isArrowUp(input);
     // Touche pressée ?
-    if (isUp && !this.isUp) {
+    if (isUp && !this.isUp && this.jumpHeight === 0) {
       this.jumpTime = 0; // démarre le temps max de saut
     }
     this.isUp = isUp;
