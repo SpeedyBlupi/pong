@@ -18,6 +18,7 @@ export default class BlupiWorld1 {
     this.random = new Random();
     this.absoluteTime = 0;
 
+    // Initialise un sol aléatoire.
     // const ground = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 20];
     const ground = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 13, 14, 15, 25];
     this.world = {};
@@ -32,6 +33,7 @@ export default class BlupiWorld1 {
     }
 
     const gadgets = [
+      // Partie technique.
       { pos: new Point(17, 9), icon: 4 * 16 + 12 },
       { pos: new Point(18, 9), icon: 5 * 16 + 15 },
       { pos: new Point(19, 9), icon: 5 * 16 + 12 },
@@ -45,6 +47,7 @@ export default class BlupiWorld1 {
       { pos: new Point(18, 12), icon: 0 * 16 + 9 },
       { pos: new Point(19, 12), icon: 0 * 16 + 10 },
 
+      // Mur du fond.
       { pos: new Point(13, 15), icon: 4 * 16 + 5 },
       { pos: new Point(14, 15), icon: 4 * 16 + 5 },
       { pos: new Point(15, 15), icon: 5 * 16 + 5 },
@@ -62,13 +65,17 @@ export default class BlupiWorld1 {
       { pos: new Point(27, 15), icon: 4 * 16 + 5 },
       { pos: new Point(28, 15), icon: 5 * 16 + 5 },
 
+      // Döpart.
       { pos: new Point(13, 16), icon: 3 * 16 + 8 },
       { pos: new Point(13, 17), icon: 3 * 16 + 3 },
       { pos: new Point(13, 18), icon: 3 * 16 + 9 },
+
+      // Arrivée.
       { pos: new Point(28, 16), icon: 3 * 16 + 10 },
       { pos: new Point(28, 17), icon: 3 * 16 + 15 },
       { pos: new Point(28, 18), icon: 3 * 16 + 11 },
 
+      // Trous.
       { pos: new Point(20, 16), icon: 1 * 16 + 13 },
       { pos: new Point(20, 18), icon: 1 * 16 + 13 },
     ];
