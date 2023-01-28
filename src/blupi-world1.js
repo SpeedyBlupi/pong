@@ -49,14 +49,14 @@ export default class BlupiWorld1 {
       { pos: new Point(14, 15), icon: 4 * 16 + 5 },
       { pos: new Point(15, 15), icon: 5 * 16 + 5 },
       { pos: new Point(16, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(17, 15), icon: 5 * 16 + 5 },
+      { pos: new Point(17, 15), icon: 6 * 16 + 5 },
       { pos: new Point(18, 15), icon: 5 * 16 + 5 },
       { pos: new Point(19, 15), icon: 4 * 16 + 5 },
       { pos: new Point(20, 15), icon: 4 * 16 + 5 },
       { pos: new Point(21, 15), icon: 5 * 16 + 5 },
       { pos: new Point(22, 15), icon: 5 * 16 + 5 },
       { pos: new Point(23, 15), icon: 5 * 16 + 5 },
-      { pos: new Point(24, 15), icon: 4 * 16 + 5 },
+      { pos: new Point(24, 15), icon: 6 * 16 + 5 },
       { pos: new Point(25, 15), icon: 4 * 16 + 5 },
       { pos: new Point(26, 15), icon: 5 * 16 + 5 },
       { pos: new Point(27, 15), icon: 4 * 16 + 5 },
@@ -68,6 +68,9 @@ export default class BlupiWorld1 {
       { pos: new Point(28, 16), icon: 3 * 16 + 10 },
       { pos: new Point(28, 17), icon: 3 * 16 + 15 },
       { pos: new Point(28, 18), icon: 3 * 16 + 11 },
+
+      { pos: new Point(20, 16), icon: 1 * 16 + 13 },
+      { pos: new Point(20, 18), icon: 1 * 16 + 13 },
     ];
     for (let i = 0; i < gadgets.length; i++) {
       const gadget = gadgets[i];
