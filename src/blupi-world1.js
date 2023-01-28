@@ -100,7 +100,7 @@ export default class BlupiWorld1 {
 
     this.speed = 50;
 
-    const o = BlupiWorld1.convertFromDiscret(new Point(4, -2));
+    const o = BlupiWorld1.convertFromDiscret(new Point(3, -4));
     this.originX = o.x;
     this.originY = o.y;
   }
