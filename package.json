@@ -1,15 +1,15 @@
 {
-  "name": "bugs-defense",
+  "name": "blupi",
   "version": "0.1.0",
-  "description": "Bugs Defense",
+  "description": "blupi",
   "private": true,
   "main": "./main.js",
   "build": {
-    "appId": "bugs-defense.app",
-    "productName": "Bugs Defense",
+    "appId": "blupi.app",
+    "productName": "blupi",
     "copyright": "Copyright © 2019 Daniel Roux",
     "mac": {
-      "category": "bugs-defense.category.type"
+      "category": "blupi.category.type"
     }
   },
   "scripts": {
@@ -40,6 +40,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.epsitec.ch/DR/bugs-defense.git"
+    "url": "https://git.epsitec.ch/DR/blupi.git"
   }
 }
