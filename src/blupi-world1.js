@@ -21,8 +21,8 @@ export default class BlupiWorld1 {
     // const ground = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 20];
     const ground = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 13, 14, 15, 25];
     this.world = {};
-    this.maxx = 100;
-    this.maxy = 100;
+    this.maxx = 40;
+    this.maxy = 40;
     for (let y = 0; y < this.maxy; y++) {
       for (let x = 0; x < this.maxx; x++) {
         const key = Point.toKey({ x, y });
