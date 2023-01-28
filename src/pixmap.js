@@ -105,7 +105,7 @@ export default class Pixmap {
         sx,
         sy,
         size.width,
-        size.height - 1, // -1 par compatibilité avec les vieilles images blupimania
+        size.height - (size.heightMinus || 0),
         0,
         0,
         dstRect.width / scaleX,
@@ -191,6 +191,7 @@ export default class Pixmap {
           imageHeight: 640,
           width: 80,
           height: 80,
+          heightMinus: 1, // -1 par compatibilité avec les vieilles images blupimania
         };
         break;
 
