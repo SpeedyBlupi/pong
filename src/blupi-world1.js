@@ -14,7 +14,8 @@ export default class BlupiWorld1 {
     return { x, y };
   }
 
-  constructor() {
+  constructor(mode) {
+    this.mode = mode;
     this.random = new Random();
     this.absoluteTime = 0;
 
@@ -122,23 +123,25 @@ export default class BlupiWorld1 {
   }
 
   step(device, elapsedTime, input) {
-    this.absoluteTime += elapsedTime * this.speed;
+    this.absoluteTime += elapsedTime;
 
-    if (this.isArrowLeft(input)) {
-      this.originX += elapsedTime * this.speed * 4;
-      this.originY += elapsedTime * this.speed * 1;
-    }
-    if (this.isArrowRight(input)) {
-      this.originX -= elapsedTime * this.speed * 4;
-      this.originY -= elapsedTime * this.speed * 1;
-    }
-    if (this.isArrowUp(input)) {
-      this.originX -= elapsedTime * this.speed * 2;
-      this.originY += elapsedTime * this.speed * 4;
-    }
-    if (this.isArrowDown(input)) {
-      this.originX += elapsedTime * this.speed * 2;
-      this.originY -= elapsedTime * this.speed * 4;
+    if (this.mode === "move") {
+      if (this.isArrowLeft(input)) {
+        this.originX += elapsedTime * this.speed * 4;
+        this.originY += elapsedTime * this.speed * 1;
+      }
+      if (this.isArrowRight(input)) {
+        this.originX -= elapsedTime * this.speed * 4;
+        this.originY -= elapsedTime * this.speed * 1;
+      }
+      if (this.isArrowUp(input)) {
+        this.originX -= elapsedTime * this.speed * 2;
+        this.originY += elapsedTime * this.speed * 4;
+      }
+      if (this.isArrowDown(input)) {
+        this.originX += elapsedTime * this.speed * 2;
+        this.originY -= elapsedTime * this.speed * 4;
+      }
     }
   }
 

@@ -27,7 +27,8 @@ export default class Game {
     this.pong1 = new Pong1();
     this.pong2 = new Pong2();
     this.pingPong1 = new PingPong1();
-    this.world1 = new BlupiWorld1();
+    // this.world1 = new BlupiWorld1("move");
+    this.world1 = new BlupiWorld1("fix");
     this.blupi1 = new BlupiWalks1();
     this.blupi2 = new BlupiWalks2();
   }

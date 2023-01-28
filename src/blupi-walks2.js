@@ -19,6 +19,11 @@ export default class BlupiWalks2 {
     this.horizontalMovePerFrame = 8; // better
     this.speed = 80; // 80 pixels / second
 
+    this.isUp = false;
+    this.jumpTime = 0;
+    this.jumpSpeed = 2;
+    this.jumpHeight = 0; // 0..1
+
     this.origin = new Point(0, 0);
   }
 
@@ -26,11 +31,33 @@ export default class BlupiWalks2 {
     this.origin = origin;
   }
 
+  isArrowUp(input) {
+    return input.keysDown.has("ArrowUp");
+  }
+
   step(device, elapsedTime, input) {
     this.absoluteTime += elapsedTime;
 
     this.distance += elapsedTime * this.speed;
     this.distance = this.distance % 560;
+
+    const isUp = this.isArrowUp(input);
+    // Touche pressée ?
+    if (isUp && !this.isUp) {
+      this.jumpTime = 0; // démarre le temps max de saut
+    }
+    this.isUp = isUp;
+
+    // Si blupi saute, mais depuis moins de 0.5s :
+    if (isUp && this.jumpTime < 0.5) {
+      // Blupi monte.
+      this.jumpTime += elapsedTime;
+      this.jumpHeight += elapsedTime * this.jumpSpeed;
+    } else {
+      // Blupi redescend.
+      this.jumpHeight -= elapsedTime * this.jumpSpeed;
+    }
+    this.jumpHeight = Misc.clip(this.jumpHeight); // 0..1
   }
 
   draw(device, pixmap) {
@@ -39,9 +66,19 @@ export default class BlupiWalks2 {
     let position = Point.move(this.start, goal, this.distance);
     position = Point.add(this.origin, position);
 
-    const i = Math.trunc(this.distance / this.horizontalMovePerFrame);
-    const icons = [1, 2, 1, 3];
-    const icon = icons[i % icons.length];
+    let icon;
+    if (this.jumpHeight === 0) {
+      // Blupi marche.
+      const i = Math.trunc(this.distance / this.horizontalMovePerFrame);
+      const icons = [1, 2, 1, 3];
+      icon = icons[i % icons.length];
+    } else {
+      // Blupi saute.
+      icon = 21;
+      const y = Math.pow(1 - this.jumpHeight, 2);
+      const h = Misc.linear(0, -50, 1, 0, y);
+      position.y += h;
+    }
 
     const rect = Rect.fromCenterSize(position, 80);
     pixmap.drawIcon(device, "bm1", icon, rect, 1, 0);
