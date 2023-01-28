@@ -22,8 +22,8 @@ export default class BlupiWorld1 {
     // const ground = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 20];
     const ground = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 13, 14, 15, 25];
     this.world = {};
-    this.maxx = 40;
-    this.maxy = 40;
+    this.maxx = 20;
+    this.maxy = 15;
     for (let y = 0; y < this.maxy; y++) {
       for (let x = 0; x < this.maxx; x++) {
         const key = Point.toKey({ x, y });
@@ -32,52 +32,64 @@ export default class BlupiWorld1 {
       }
     }
 
+    // Initialise le bord gauche du sol.
+    for (let x = 0; x < this.maxx; x++) {
+      const key = Point.toKey({ x, y: this.maxy });
+      this.world[key] = 1 * 16 + 14;
+    }
+
+    // Initialise le bord droite du sol.
+    for (let y = 0; y < this.maxy; y++) {
+      const key = Point.toKey({ x: this.maxx, y });
+      this.world[key] = 1 * 16 + 15;
+    }
+
     const gadgets = [
       // Partie technique.
-      { pos: new Point(17, 9), icon: 4 * 16 + 12 },
-      { pos: new Point(18, 9), icon: 5 * 16 + 15 },
-      { pos: new Point(19, 9), icon: 5 * 16 + 12 },
-      { pos: new Point(17, 10), icon: 0 * 16 + 4 },
-      { pos: new Point(18, 10), icon: 0 * 16 + 6 },
-      { pos: new Point(19, 10), icon: 0 * 16 + 11 },
-      { pos: new Point(17, 11), icon: 0 * 16 + 10 },
-      { pos: new Point(18, 11), icon: 6 * 16 + 13 },
-      { pos: new Point(19, 11), icon: 0 * 16 + 5 },
-      { pos: new Point(17, 12), icon: 0 * 16 + 7 },
-      { pos: new Point(18, 12), icon: 0 * 16 + 9 },
-      { pos: new Point(19, 12), icon: 0 * 16 + 10 },
+      { pos: new Point(7, 1), icon: 4 * 16 + 12 },
+      { pos: new Point(8, 1), icon: 5 * 16 + 15 },
+      { pos: new Point(9, 1), icon: 5 * 16 + 12 },
+      { pos: new Point(7, 2), icon: 0 * 16 + 4 },
+      { pos: new Point(8, 2), icon: 0 * 16 + 6 },
+      { pos: new Point(9, 2), icon: 0 * 16 + 11 },
+      { pos: new Point(7, 3), icon: 0 * 16 + 10 },
+      { pos: new Point(8, 3), icon: 6 * 16 + 13 },
+      { pos: new Point(9, 3), icon: 0 * 16 + 5 },
+      { pos: new Point(7, 4), icon: 0 * 16 + 7 },
+      { pos: new Point(8, 4), icon: 0 * 16 + 9 },
+      { pos: new Point(9, 4), icon: 0 * 16 + 10 },
 
       // Mur du fond.
-      { pos: new Point(13, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(14, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(15, 15), icon: 5 * 16 + 5 },
-      { pos: new Point(16, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(17, 15), icon: 6 * 16 + 5 },
-      { pos: new Point(18, 15), icon: 5 * 16 + 5 },
-      { pos: new Point(19, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(20, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(21, 15), icon: 5 * 16 + 5 },
-      { pos: new Point(22, 15), icon: 5 * 16 + 5 },
-      { pos: new Point(23, 15), icon: 5 * 16 + 5 },
-      { pos: new Point(24, 15), icon: 6 * 16 + 5 },
-      { pos: new Point(25, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(26, 15), icon: 5 * 16 + 5 },
-      { pos: new Point(27, 15), icon: 4 * 16 + 5 },
-      { pos: new Point(28, 15), icon: 5 * 16 + 5 },
+      { pos: new Point(3, 7), icon: 4 * 16 + 5 },
+      { pos: new Point(4, 7), icon: 4 * 16 + 5 },
+      { pos: new Point(5, 7), icon: 5 * 16 + 5 },
+      { pos: new Point(6, 7), icon: 4 * 16 + 5 },
+      { pos: new Point(7, 7), icon: 6 * 16 + 5 },
+      { pos: new Point(8, 7), icon: 5 * 16 + 5 },
+      { pos: new Point(9, 7), icon: 4 * 16 + 5 },
+      { pos: new Point(10, 7), icon: 4 * 16 + 5 },
+      { pos: new Point(11, 7), icon: 5 * 16 + 5 },
+      { pos: new Point(12, 7), icon: 5 * 16 + 5 },
+      { pos: new Point(13, 7), icon: 5 * 16 + 5 },
+      { pos: new Point(14, 7), icon: 6 * 16 + 5 },
+      { pos: new Point(15, 7), icon: 4 * 16 + 5 },
+      { pos: new Point(16, 7), icon: 5 * 16 + 5 },
+      { pos: new Point(17, 7), icon: 4 * 16 + 5 },
+      { pos: new Point(18, 7), icon: 5 * 16 + 5 },
 
       // Döpart.
-      { pos: new Point(13, 16), icon: 3 * 16 + 8 },
-      { pos: new Point(13, 17), icon: 3 * 16 + 3 },
-      { pos: new Point(13, 18), icon: 3 * 16 + 9 },
+      { pos: new Point(3, 8), icon: 3 * 16 + 8 },
+      { pos: new Point(3, 9), icon: 3 * 16 + 3 },
+      { pos: new Point(3, 10), icon: 3 * 16 + 9 },
 
       // Arrivée.
-      { pos: new Point(28, 16), icon: 3 * 16 + 10 },
-      { pos: new Point(28, 17), icon: 3 * 16 + 15 },
-      { pos: new Point(28, 18), icon: 3 * 16 + 11 },
+      { pos: new Point(18, 8), icon: 3 * 16 + 10 },
+      { pos: new Point(18, 9), icon: 3 * 16 + 15 },
+      { pos: new Point(18, 10), icon: 3 * 16 + 11 },
 
       // Trous.
-      { pos: new Point(20, 16), icon: 1 * 16 + 13 },
-      { pos: new Point(20, 18), icon: 1 * 16 + 13 },
+      { pos: new Point(10, 8), icon: 1 * 16 + 13 },
+      { pos: new Point(10, 10), icon: 1 * 16 + 13 },
     ];
     for (let i = 0; i < gadgets.length; i++) {
       const gadget = gadgets[i];
@@ -86,8 +98,10 @@ export default class BlupiWorld1 {
     }
 
     this.speed = 50;
-    this.originX = 150;
-    this.originY = -250;
+
+    const o = BlupiWorld1.convertFromDiscret(new Point(4, -2));
+    this.originX = o.x;
+    this.originY = o.y;
   }
 
   getOrigin() {
@@ -131,8 +145,8 @@ export default class BlupiWorld1 {
   draw(device, pixmap) {
     const o = this.getOrigin();
 
-    for (let y = 0; y < this.maxy; y++) {
-      for (let x = 0; x < this.maxx; x++) {
+    for (let y = 0; y <= this.maxy; y++) {
+      for (let x = 0; x <= this.maxx; x++) {
         const p = { x, y };
         const icon = this.world[Point.toKey(p)];
         const c = Point.add(o, BlupiWorld1.convertFromDiscret({ x, y }));

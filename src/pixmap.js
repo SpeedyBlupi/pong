@@ -105,7 +105,7 @@ export default class Pixmap {
         sx,
         sy,
         size.width,
-        size.height,
+        size.height - 1, // -1 par compatibilité avec les vieilles images blupimania
         0,
         0,
         dstRect.width / scaleX,

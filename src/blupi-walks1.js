@@ -11,7 +11,7 @@ import BlupiWorld1 from "./blupi-world1";
 export default class BlupiWalks1 {
   constructor() {
     this.absoluteTime = 0;
-    this.start = BlupiWorld1.convertFromDiscret({ x: 14, y: 16 });
+    this.start = BlupiWorld1.convertFromDiscret({ x: 4, y: 8 });
 
     this.delta = new Point(4, 1); // const from icons
     // this.horizontalMovePerFrame = 14; // exact, but not nice
